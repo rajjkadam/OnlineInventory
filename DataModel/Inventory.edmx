@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebInventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="categoriesmaster">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoriesName" Type="nchar" MaxLength="50" />
+          <Property Name="subCategoriesName" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Countryid" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="name" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="nchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="customermaster">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nchar" MaxLength="50" />
+          <Property Name="ContacntNo" Type="nchar" MaxLength="20" />
+          <Property Name="EmailId" Type="nchar" MaxLength="40" />
+          <Property Name="GSTIN" Type="nchar" MaxLength="20" />
+          <Property Name="PAN" Type="nchar" MaxLength="20" />
+          <Property Name="TIN" Type="nchar" MaxLength="30" />
+          <Property Name="Country" Type="nchar" MaxLength="40" />
+          <Property Name="State" Type="nchar" MaxLength="30" />
+          <Property Name="City" Type="nchar" MaxLength="20" />
+          <Property Name="Zip" Type="nchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="gstcat">
+          <Key>
+            <PropertyRef Name="gstcatid" />
+          </Key>
+          <Property Name="gstcatid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoriesName" Type="nchar" MaxLength="50" />
+          <Property Name="subCategoriesName" Type="nchar" MaxLength="50" />
+          <Property Name="catType" Type="nchar" MaxLength="10" />
+          <Property Name="tax" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="productmaster">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductTaxable" Type="nchar" MaxLength="20" />
+          <Property Name="ProductType" Type="nchar" MaxLength="10" />
+          <Property Name="ProductName" Type="nchar" MaxLength="100" />
+          <Property Name="UnitoMesure" Type="nchar" MaxLength="30" />
+          <Property Name="AlternameUom" Type="nchar" MaxLength="20" />
+          <Property Name="TaxType" Type="nchar" MaxLength="10" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Discount" Type="nchar" MaxLength="10" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SalePrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="nchar" MaxLength="50" />
+          <Property Name="Hscno" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="countryid" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="suppliermaster">
+          <Key>
+            <PropertyRef Name="SuppId" />
+          </Key>
+          <Property Name="SuppId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nchar" MaxLength="10" />
+          <Property Name="PhoneNo" Type="nchar" MaxLength="12" />
+          <Property Name="EmailId" Type="nchar" MaxLength="50" />
+          <Property Name="GSTIN" Type="nchar" MaxLength="30" />
+          <Property Name="PAN" Type="nchar" MaxLength="50" />
+          <Property Name="VAT" Type="nchar" MaxLength="50" />
+          <Property Name="SupCode" Type="nchar" MaxLength="40" />
+          <Property Name="Address" Type="nchar" MaxLength="40" />
+          <Property Name="Country" Type="nchar" MaxLength="20" />
+          <Property Name="State" Type="nchar" MaxLength="20" />
+          <Property Name="City" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="taxesmaster">
+          <Key>
+            <PropertyRef Name="TaxMasterId" />
+          </Key>
+          <Property Name="TaxMasterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxName" Type="nchar" MaxLength="30" />
+          <Property Name="TaxPercentage" Type="nchar" MaxLength="10" />
+          <Property Name="TaxType" Type="nchar" MaxLength="10" />
+          <Property Name="TaxStatus" Type="nchar" MaxLength="10" />
+          <Property Name="TaxRoundingMethod" Type="nchar" MaxLength="10" />
+          <Property Name="TaxGroups" Type="nchar" MaxLength="10" />
+          <Property Name="TaxSubGroups" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="uommaster">
+          <Key>
+            <PropertyRef Name="uomId" />
+          </Key>
+          <Property Name="uomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="symbol" Type="nchar" MaxLength="10" />
+          <Property Name="formalName" Type="nchar" MaxLength="20" />
+          <Property Name="numberofdecimalPlaces" Type="int" />
+        </EntityType>
+        <EntityContainer Name="WebInventoryModelStoreContainer">
+          <EntitySet Name="categoriesmaster" EntityType="Self.categoriesmaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customermaster" EntityType="Self.customermaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gstcat" EntityType="Self.gstcat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productmaster" EntityType="Self.productmaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="suppliermaster" EntityType="Self.suppliermaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="taxesmaster" EntityType="Self.taxesmaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uommaster" EntityType="Self.uommaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebInventoryModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="categoriesmaster">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoriesName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="subCategoriesName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Countryid" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country1" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="customermaster">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ContacntNo" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="GSTIN" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="PAN" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="TIN" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="gstcat">
+          <Key>
+            <PropertyRef Name="gstcatid" />
+          </Key>
+          <Property Name="gstcatid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoriesName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="subCategoriesName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="catType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tax" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="productmaster">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductTaxable" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="ProductType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="UnitoMesure" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="AlternameUom" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="TaxType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Discount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SalePrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Hscno" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="countryid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="suppliermaster">
+          <Key>
+            <PropertyRef Name="SuppId" />
+          </Key>
+          <Property Name="SuppId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="GSTIN" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="PAN" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="VAT" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="SupCode" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="taxesmaster">
+          <Key>
+            <PropertyRef Name="TaxMasterId" />
+          </Key>
+          <Property Name="TaxMasterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="TaxPercentage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TaxType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TaxStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TaxRoundingMethod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TaxGroups" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TaxSubGroups" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="uommaster">
+          <Key>
+            <PropertyRef Name="uomId" />
+          </Key>
+          <Property Name="uomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="symbol" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="formalName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="numberofdecimalPlaces" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="WebInventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categoriesmaster" EntityType="Self.categoriesmaster" />
+          <EntitySet Name="city" EntityType="Self.city" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="customermaster" EntityType="Self.customermaster" />
+          <EntitySet Name="gstcat" EntityType="Self.gstcat" />
+          <EntitySet Name="productmaster" EntityType="Self.productmaster" />
+          <EntitySet Name="State" EntityType="Self.State" />
+          <EntitySet Name="suppliermaster" EntityType="Self.suppliermaster" />
+          <EntitySet Name="taxesmaster" EntityType="Self.taxesmaster" />
+          <EntitySet Name="uommaster" EntityType="Self.uommaster" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebInventoryModelStoreContainer" CdmEntityContainer="WebInventoryEntities">
+          <EntitySetMapping Name="categoriesmaster">
+            <EntityTypeMapping TypeName="WebInventoryModel.categoriesmaster">
+              <MappingFragment StoreEntitySet="categoriesmaster">
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="categoriesName" ColumnName="categoriesName" />
+                <ScalarProperty Name="subCategoriesName" ColumnName="subCategoriesName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="city">
+            <EntityTypeMapping TypeName="WebInventoryModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="WebInventoryModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Country1" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customermaster">
+            <EntityTypeMapping TypeName="WebInventoryModel.customermaster">
+              <MappingFragment StoreEntitySet="customermaster">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="ContacntNo" ColumnName="ContacntNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+                <ScalarProperty Name="PAN" ColumnName="PAN" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gstcat">
+            <EntityTypeMapping TypeName="WebInventoryModel.gstcat">
+              <MappingFragment StoreEntitySet="gstcat">
+                <ScalarProperty Name="gstcatid" ColumnName="gstcatid" />
+                <ScalarProperty Name="categoriesName" ColumnName="categoriesName" />
+                <ScalarProperty Name="subCategoriesName" ColumnName="subCategoriesName" />
+                <ScalarProperty Name="catType" ColumnName="catType" />
+                <ScalarProperty Name="tax" ColumnName="tax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productmaster">
+            <EntityTypeMapping TypeName="WebInventoryModel.productmaster">
+              <MappingFragment StoreEntitySet="productmaster">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductTaxable" ColumnName="ProductTaxable" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="UnitoMesure" ColumnName="UnitoMesure" />
+                <ScalarProperty Name="AlternameUom" ColumnName="AlternameUom" />
+                <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Hscno" ColumnName="Hscno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="WebInventoryModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="countryid" ColumnName="countryid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suppliermaster">
+            <EntityTypeMapping TypeName="WebInventoryModel.suppliermaster">
+              <MappingFragment StoreEntitySet="suppliermaster">
+                <ScalarProperty Name="SuppId" ColumnName="SuppId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+                <ScalarProperty Name="PAN" ColumnName="PAN" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="SupCode" ColumnName="SupCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taxesmaster">
+            <EntityTypeMapping TypeName="WebInventoryModel.taxesmaster">
+              <MappingFragment StoreEntitySet="taxesmaster">
+                <ScalarProperty Name="TaxMasterId" ColumnName="TaxMasterId" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
+                <ScalarProperty Name="TaxRoundingMethod" ColumnName="TaxRoundingMethod" />
+                <ScalarProperty Name="TaxGroups" ColumnName="TaxGroups" />
+                <ScalarProperty Name="TaxSubGroups" ColumnName="TaxSubGroups" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uommaster">
+            <EntityTypeMapping TypeName="WebInventoryModel.uommaster">
+              <MappingFragment StoreEntitySet="uommaster">
+                <ScalarProperty Name="uomId" ColumnName="uomId" />
+                <ScalarProperty Name="symbol" ColumnName="symbol" />
+                <ScalarProperty Name="formalName" ColumnName="formalName" />
+                <ScalarProperty Name="numberofdecimalPlaces" ColumnName="numberofdecimalPlaces" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
